@@ -1,6 +1,6 @@
 FROM node:18.20.3
 
-RUN npm install -g npm@9.1.3
+RUN apt-get update && apt-get dist-upgrade -y && rm -rf /var/lib/apt/lists/*
 
 ADD package.json .
 ADD index.js .
