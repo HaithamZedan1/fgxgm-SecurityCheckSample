@@ -1,6 +1,9 @@
-FROM node:18.20.3
+FROM node:18-bookworm-slim
 
-RUN apt-get update && apt-get dist-upgrade -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git curl wget \
+    && rm -rf /var/lib/apt/lists/*
+RUN npm install -g npm@9.1.3
 
 ADD package.json .
 ADD index.js .
